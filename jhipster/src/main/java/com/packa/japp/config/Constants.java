@@ -12,7 +12,7 @@ public final class Constants {
     public static final String ANONYMOUS_USER = "anonymoususer";
     public static final String DEFAULT_LANGUAGE = "en";
 
-    public static final String URI_API = "http://192.168.0.19:3002";
+    public static final String URI_API = "http://node1:3001";
     private Constants() {
     }
 }

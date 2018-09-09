@@ -30,12 +30,14 @@ services:
     image: jhipster/jhipster
     container_name: jhipster
     volumes:
-      - ~/workspace/blockchain-project/jhipster:/home/jhipster/app
+      - ./jhipster:/home/jhipster/app
       - ~/.m2:/home/jhipster/.m2
     ports:
       - "8080:8080"
       - "9000:9000"
       - "3001:3001"
+    links:
+      - node1:node1
     depends_on:
       - node1
       - node2

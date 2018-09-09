@@ -22,12 +22,12 @@ import java.util.Map;
 @RunWith(SpringRunner.class)
 public class RestClientTest {
 
-    private static final String URI_API = "http://192.168.0.45:3002";
+    private static final String URI_API = "http://192.168.0.19:3002";
 
 
     @Test
     public void getBlockChain() throws Exception {
-        final String uri = "http://192.168.0.45:3002/blocks";
+        final String uri = "http://node1:3002/blocks";
 
         RestTemplate restTemplate = new RestTemplate();
 

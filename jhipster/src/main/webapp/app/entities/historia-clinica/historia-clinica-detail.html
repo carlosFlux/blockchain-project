@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span>Historia Clinica</span> {{vm.historiaClinica.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Medico</span></dt>
+        <dd>
+            <a ui-sref="medico-detail({id:vm.historiaClinica.medicoId})">{{vm.historiaClinica.medicoId}}</a>
+        </dd>
+        <dt><span>Institucion</span></dt>
+        <dd>
+            <a ui-sref="institucion-detail({id:vm.historiaClinica.institucionId})">{{vm.historiaClinica.institucionNombre}}</a>
+        </dd>
+        <dt><span>Paciente</span></dt>
+        <dd>
+            <a ui-sref="paciente-detail({id:vm.historiaClinica.pacienteId})">{{vm.historiaClinica.pacienteDni}}</a>
+        </dd>
+        <dt><span>Sintoma</span></dt>
+        <dd>
+            <a ui-sref="sintoma-detail({id:vm.historiaClinica.sintomaId})">{{vm.historiaClinica.sintomaId}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="historia-clinica-detail.edit({id:vm.historiaClinica.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

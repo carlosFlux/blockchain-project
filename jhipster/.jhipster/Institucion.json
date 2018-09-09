@@ -1,0 +1,23 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "historiaClinica",
+            "otherEntityName": "historiaClinica",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "institucion"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180306233210",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "entityTableName": "institucion",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

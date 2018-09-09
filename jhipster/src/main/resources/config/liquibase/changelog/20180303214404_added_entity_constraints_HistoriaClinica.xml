@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity HistoriaClinica.
+    -->
+    <changeSet id="20180303214404-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="medico_id"
+                                 baseTableName="historia_clinica"
+                                 constraintName="fk_historia_clinica_medico_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="medico"/>
+
+        <addForeignKeyConstraint baseColumnNames="institucion_id"
+                                 baseTableName="historia_clinica"
+                                 constraintName="fk_historia_clinica_institucion_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="institucion"/>
+
+        <addForeignKeyConstraint baseColumnNames="paciente_id"
+                                 baseTableName="historia_clinica"
+                                 constraintName="fk_historia_clinica_paciente_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="paciente"/>
+
+        <addForeignKeyConstraint baseColumnNames="sintoma_id"
+                                 baseTableName="historia_clinica"
+                                 constraintName="fk_historia_clinica_sintoma_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="sintoma"/>
+
+    </changeSet>
+</databaseChangeLog>

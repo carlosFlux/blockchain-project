@@ -1,0 +1,38 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "medico",
+            "otherEntityName": "medico",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "institucion",
+            "otherEntityName": "institucion",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "nombre"
+        },
+        {
+            "relationshipName": "paciente",
+            "otherEntityName": "paciente",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "dni"
+        },
+        {
+            "relationshipName": "sintoma",
+            "otherEntityName": "sintoma",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "historiaClinica"
+        }
+    ],
+    "fields": [],
+    "changelogDate": "20180303214404",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "entityTableName": "historia_clinica",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

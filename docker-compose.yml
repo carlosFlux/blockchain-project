@@ -1,0 +1,44 @@
+version: '3'
+services:
+  node1:
+    build:
+      context: ./naivechain
+      dockerfile: Dockerfile
+    ports:
+    - "3002:3001"
+  node2:
+    environment:
+    - PEERS=ws://node1:6001
+    build:
+      context: ./naivechain
+      dockerfile: Dockerfile
+    ports:
+    - "3003:3001"
+    links:
+    - node1:node1
+  node3:
+    environment:
+    - PEERS=ws://node2:6001
+    build:
+      context: ./naivechain
+      dockerfile: Dockerfile
+    ports:
+    - "3004:3001"
+    links:
+    - node2:node2
+  app:
+    image: jhipster/jhipster
+    container_name: jhipster
+    volumes:
+      - ~/workspace/blockchain-project/jhipster:/home/jhipster/app
+      - ~/.m2:/home/jhipster/.m2
+    ports:
+      - "8080:8080"
+      - "9000:9000"
+      - "3001:3001"
+    depends_on:
+      - node1
+      - node2
+      - node3
+    working_dir: /home/jhipster/app
+    command: ./mvnw

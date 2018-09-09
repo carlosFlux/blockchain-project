@@ -1,0 +1,24 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "historiaClinica",
+            "otherEntityName": "historiaClinica",
+            "relationshipType": "one-to-one",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "sintoma"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "descripcion",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180303214101",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "entityTableName": "sintoma",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

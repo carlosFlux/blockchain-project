@@ -1,9 +1,6 @@
 package com.packa.japp.service.dto;
 
-
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -11,52 +8,54 @@ import java.util.Objects;
  */
 public class InstitucionDTO implements Serializable {
 
-    private Long id;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5382259328713593656L;
 
-    private String nombre;
+	private Long id;
 
-    public Long getId() {
-        return id;
-    }
+	private String nombre;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public String getNombre() {
-        return nombre;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-        InstitucionDTO institucionDTO = (InstitucionDTO) o;
-        if(institucionDTO.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), institucionDTO.getId());
-    }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(getId());
-    }
+		InstitucionDTO institucionDTO = (InstitucionDTO) o;
+		if (institucionDTO.getId() == null || getId() == null) {
+			return false;
+		}
+		return Objects.equals(getId(), institucionDTO.getId());
+	}
 
-    @Override
-    public String toString() {
-        return "InstitucionDTO{" +
-            "id=" + getId() +
-            ", nombre='" + getNombre() + "'" +
-            "}";
-    }
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(getId());
+	}
+
+	@Override
+	public String toString() {
+		return "InstitucionDTO{" + "id=" + getId() + ", nombre='" + getNombre() + "'" + "}";
+	}
 }

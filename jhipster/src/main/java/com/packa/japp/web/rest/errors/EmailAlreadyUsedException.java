@@ -2,7 +2,12 @@ package com.packa.japp.web.rest.errors;
 
 public class EmailAlreadyUsedException extends BadRequestAlertException {
 
-    public EmailAlreadyUsedException() {
-        super(ErrorConstants.EMAIL_ALREADY_USED_TYPE, "Email address already in use", "userManagement", "emailexists");
-    }
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8565412271746341448L;
+
+	public EmailAlreadyUsedException() {
+		super(ErrorConstants.EMAIL_ALREADY_USED_TYPE, "Email address already in use", "userManagement", "emailexists");
+	}
 }

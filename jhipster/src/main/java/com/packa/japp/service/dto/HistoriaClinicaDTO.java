@@ -1,9 +1,6 @@
 package com.packa.japp.service.dto;
 
-
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -11,101 +8,104 @@ import java.util.Objects;
  */
 public class HistoriaClinicaDTO implements Serializable {
 
-    private Long id;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 548129401503828389L;
 
-    private Long medicoId;
+	private Long id;
 
-    private Long institucionId;
+	private Long medicoId;
 
-    private String institucionNombre;
+	private Long institucionId;
 
-    private Long pacienteId;
+	private String institucionNombre;
 
-    private String pacienteDni;
+	private Long pacienteId;
 
-    private Long sintomaId;
+	private String pacienteDni;
 
-    public Long getId() {
-        return id;
-    }
+	private Long sintomaId;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public Long getMedicoId() {
-        return medicoId;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setMedicoId(Long medicoId) {
-        this.medicoId = medicoId;
-    }
+	public Long getMedicoId() {
+		return medicoId;
+	}
 
-    public Long getInstitucionId() {
-        return institucionId;
-    }
+	public void setMedicoId(Long medicoId) {
+		this.medicoId = medicoId;
+	}
 
-    public void setInstitucionId(Long institucionId) {
-        this.institucionId = institucionId;
-    }
+	public Long getInstitucionId() {
+		return institucionId;
+	}
 
-    public String getInstitucionNombre() {
-        return institucionNombre;
-    }
+	public void setInstitucionId(Long institucionId) {
+		this.institucionId = institucionId;
+	}
 
-    public void setInstitucionNombre(String institucionNombre) {
-        this.institucionNombre = institucionNombre;
-    }
+	public String getInstitucionNombre() {
+		return institucionNombre;
+	}
 
-    public Long getPacienteId() {
-        return pacienteId;
-    }
+	public void setInstitucionNombre(String institucionNombre) {
+		this.institucionNombre = institucionNombre;
+	}
 
-    public void setPacienteId(Long pacienteId) {
-        this.pacienteId = pacienteId;
-    }
+	public Long getPacienteId() {
+		return pacienteId;
+	}
 
-    public String getPacienteDni() {
-        return pacienteDni;
-    }
+	public void setPacienteId(Long pacienteId) {
+		this.pacienteId = pacienteId;
+	}
 
-    public void setPacienteDni(String pacienteDni) {
-        this.pacienteDni = pacienteDni;
-    }
+	public String getPacienteDni() {
+		return pacienteDni;
+	}
 
-    public Long getSintomaId() {
-        return sintomaId;
-    }
+	public void setPacienteDni(String pacienteDni) {
+		this.pacienteDni = pacienteDni;
+	}
 
-    public void setSintomaId(Long sintomaId) {
-        this.sintomaId = sintomaId;
-    }
+	public Long getSintomaId() {
+		return sintomaId;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+	public void setSintomaId(Long sintomaId) {
+		this.sintomaId = sintomaId;
+	}
 
-        HistoriaClinicaDTO historiaClinicaDTO = (HistoriaClinicaDTO) o;
-        if(historiaClinicaDTO.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), historiaClinicaDTO.getId());
-    }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(getId());
-    }
+		HistoriaClinicaDTO historiaClinicaDTO = (HistoriaClinicaDTO) o;
+		if (historiaClinicaDTO.getId() == null || getId() == null) {
+			return false;
+		}
+		return Objects.equals(getId(), historiaClinicaDTO.getId());
+	}
 
-    @Override
-    public String toString() {
-        return "HistoriaClinicaDTO{" +
-            "id=" + getId() +
-            "}";
-    }
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(getId());
+	}
+
+	@Override
+	public String toString() {
+		return "HistoriaClinicaDTO{" + "id=" + getId() + "}";
+	}
 }

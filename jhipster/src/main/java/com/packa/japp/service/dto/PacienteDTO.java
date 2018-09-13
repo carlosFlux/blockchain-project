@@ -1,97 +1,95 @@
 package com.packa.japp.service.dto;
 
-
-import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * A DTO for the Paciente entity.
  */
 public class PacienteDTO implements Serializable {
 
-    private Long id;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8881405919217434235L;
 
-    @NotNull
-    private String nombre;
+	private Long id;
 
-    private Integer edad;
+	@NotNull
+	private String nombre;
 
-    private Integer dni;
+	private Integer edad;
 
-    private String nacionalidad;
+	private Integer dni;
 
-    public Long getId() {
-        return id;
-    }
+	private String nacionalidad;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public String getNombre() {
-        return nombre;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public Integer getEdad() {
-        return edad;
-    }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    public void setEdad(Integer edad) {
-        this.edad = edad;
-    }
+	public Integer getEdad() {
+		return edad;
+	}
 
-    public Integer getDni() {
-        return dni;
-    }
+	public void setEdad(Integer edad) {
+		this.edad = edad;
+	}
 
-    public void setDni(Integer dni) {
-        this.dni = dni;
-    }
+	public Integer getDni() {
+		return dni;
+	}
 
-    public String getNacionalidad() {
-        return nacionalidad;
-    }
+	public void setDni(Integer dni) {
+		this.dni = dni;
+	}
 
-    public void setNacionalidad(String nacionalidad) {
-        this.nacionalidad = nacionalidad;
-    }
+	public String getNacionalidad() {
+		return nacionalidad;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+	public void setNacionalidad(String nacionalidad) {
+		this.nacionalidad = nacionalidad;
+	}
 
-        PacienteDTO pacienteDTO = (PacienteDTO) o;
-        if(pacienteDTO.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), pacienteDTO.getId());
-    }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(getId());
-    }
+		PacienteDTO pacienteDTO = (PacienteDTO) o;
+		if (pacienteDTO.getId() == null || getId() == null) {
+			return false;
+		}
+		return Objects.equals(getId(), pacienteDTO.getId());
+	}
 
-    @Override
-    public String toString() {
-        return "PacienteDTO{" +
-            "id=" + getId() +
-            ", nombre='" + getNombre() + "'" +
-            ", edad=" + getEdad() +
-            ", dni=" + getDni() +
-            ", nacionalidad='" + getNacionalidad() + "'" +
-            "}";
-    }
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(getId());
+	}
+
+	@Override
+	public String toString() {
+		return "PacienteDTO{" + "id=" + getId() + ", nombre='" + getNombre() + "'" + ", edad=" + getEdad() + ", dni="
+				+ getDni() + ", nacionalidad='" + getNacionalidad() + "'" + "}";
+	}
 }

@@ -1,9 +1,6 @@
 package com.packa.japp.service.dto;
 
-
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -11,52 +8,54 @@ import java.util.Objects;
  */
 public class SintomaDTO implements Serializable {
 
-    private Long id;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4682458584574423995L;
 
-    private String descripcion;
+	private Long id;
 
-    public Long getId() {
-        return id;
-    }
+	private String descripcion;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+	public String getDescripcion() {
+		return descripcion;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
 
-        SintomaDTO sintomaDTO = (SintomaDTO) o;
-        if(sintomaDTO.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), sintomaDTO.getId());
-    }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(getId());
-    }
+		SintomaDTO sintomaDTO = (SintomaDTO) o;
+		if (sintomaDTO.getId() == null || getId() == null) {
+			return false;
+		}
+		return Objects.equals(getId(), sintomaDTO.getId());
+	}
 
-    @Override
-    public String toString() {
-        return "SintomaDTO{" +
-            "id=" + getId() +
-            ", descripcion='" + getDescripcion() + "'" +
-            "}";
-    }
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(getId());
+	}
+
+	@Override
+	public String toString() {
+		return "SintomaDTO{" + "id=" + getId() + ", descripcion='" + getDescripcion() + "'" + "}";
+	}
 }

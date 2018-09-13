@@ -1,9 +1,6 @@
 package com.packa.japp.service.dto;
 
-
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -11,63 +8,65 @@ import java.util.Objects;
  */
 public class MedicoDTO implements Serializable {
 
-    private Long id;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6411321729099292443L;
 
-    private String nombre;
+	private Long id;
 
-    private String especialidad;
+	private String nombre;
 
-    public Long getId() {
-        return id;
-    }
+	private String especialidad;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public String getNombre() {
-        return nombre;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public String getEspecialidad() {
-        return especialidad;
-    }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    public void setEspecialidad(String especialidad) {
-        this.especialidad = especialidad;
-    }
+	public String getEspecialidad() {
+		return especialidad;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+	public void setEspecialidad(String especialidad) {
+		this.especialidad = especialidad;
+	}
 
-        MedicoDTO medicoDTO = (MedicoDTO) o;
-        if(medicoDTO.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), medicoDTO.getId());
-    }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(getId());
-    }
+		MedicoDTO medicoDTO = (MedicoDTO) o;
+		if (medicoDTO.getId() == null || getId() == null) {
+			return false;
+		}
+		return Objects.equals(getId(), medicoDTO.getId());
+	}
 
-    @Override
-    public String toString() {
-        return "MedicoDTO{" +
-            "id=" + getId() +
-            ", nombre='" + getNombre() + "'" +
-            ", especialidad='" + getEspecialidad() + "'" +
-            "}";
-    }
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(getId());
+	}
+
+	@Override
+	public String toString() {
+		return "MedicoDTO{" + "id=" + getId() + ", nombre='" + getNombre() + "'" + ", especialidad='"
+				+ getEspecialidad() + "'" + "}";
+	}
 }

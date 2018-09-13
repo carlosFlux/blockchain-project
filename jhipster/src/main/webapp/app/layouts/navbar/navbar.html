@@ -32,19 +32,19 @@
                         </span>
                     </a>
                     <ul class="dropdown-menu" uib-dropdown-menu>
-                        <li ui-sref-active="active" has-authority="ROLE_INSTITUCION" >
+                        <li ui-sref-active="active" has-any-authority="ROLE_ADMIN,ROLE_INSTITUCION" >
                                 <a ui-sref="paciente" ng-click="vm.collapseNavbar()">
                                     <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
                                     <span>Paciente</span>
                                 </a>
                             </li>
-                        <li ui-sref-active="active" has-authority="ROLE_INSTITUCION">
+                        <li ui-sref-active="active" has-any-authority="ROLE_ADMIN,ROLE_INSTITUCION">
                                 <a ui-sref="medico" ng-click="vm.collapseNavbar()">
                                     <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
                                     <span>Medico</span>
                                 </a>
                             </li>
-                        <li ui-sref-active="active" has-any-authority="ROLE_INSTITUCION,ROLE_MEDICO">
+                        <li ui-sref-active="active" has-any-authority="ROLE_ADMIN,ROLE_INSTITUCION,ROLE_MEDICO">
                                 <a ui-sref="sintoma" ng-click="vm.collapseNavbar()">
                                     <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
                                     <span>Sintoma</span>
@@ -56,7 +56,7 @@
                                     <span>Historia Clinica</span>
                                 </a>
                             </li>
-                        <li ui-sref-active="active" has-authority="ROLE_INSTITUCION">
+                        <li ui-sref-active="active" has-any-authority="ROLE_ADMIN,ROLE_INSTITUCION">
                                 <a ui-sref="institucion" ng-click="vm.collapseNavbar()">
                                     <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
                                     <span>Institucion</span>

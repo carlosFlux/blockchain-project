@@ -1,0 +1,4 @@
+user_id;authority_name
+3;ROLE_PACIENTE
+3;ROLE_MEDICO
+4;ROLE_INSTITUCION

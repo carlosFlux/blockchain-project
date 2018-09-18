@@ -1,40 +1,37 @@
-
 <form name="editForm" role="form" novalidate ng-submit="vm.save()">
 
     <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                ng-click="vm.clear()">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vm.clear()">&times;</button>
         <h4 class="modal-title" id="myHistoriaClinicaLabel">Create or edit a Historia Clinica</h4>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
         <div class="form-group" ng-show="vm.historiaClinica.id">
             <label for="id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                    ng-model="vm.historiaClinica.id" readonly />
+            <input type="text" class="form-control" id="id" name="id" ng-model="vm.historiaClinica.id" readonly />
         </div>
 
         <div class="form-group">
             <label for="field_medico">Medico</label>
-            <select class="form-control" id="field_medico" name="medico" ng-model="vm.historiaClinica.medicoId" ng-options="medico.id as medico.id for medico in vm.medicos"            >
+            <select class="form-control" id="field_medico" name="medico" ng-model="vm.historiaClinica.medicoId" ng-options="medico.id as medico.nombre for medico in vm.medicos">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
             <label for="field_institucion">Institucion</label>
-            <select class="form-control" id="field_institucion" name="institucion" ng-model="vm.historiaClinica.institucionId" ng-options="institucion.id as institucion.nombre for institucion in vm.institucions"            >
+            <select class="form-control" id="field_institucion" name="institucion" ng-model="vm.historiaClinica.institucionId" ng-options="institucion.id as institucion.nombre for institucion in vm.institucions">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
             <label for="field_paciente">Paciente</label>
-            <select class="form-control" id="field_paciente" name="paciente" ng-model="vm.historiaClinica.pacienteId" ng-options="paciente.id as paciente.dni for paciente in vm.pacientes"            >
+            <select class="form-control" id="field_paciente" name="paciente" ng-model="vm.historiaClinica.pacienteId" ng-options="paciente.id as paciente.nombre for paciente in vm.pacientes">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
             <label for="field_sintoma">Sintoma</label>
-            <select class="form-control" id="field_sintoma" name="sintoma" ng-model="vm.historiaClinica.sintomaId" ng-options="sintoma.id as sintoma.id for sintoma in vm.sintomas | orderBy:'id'">
+            <select class="form-control" id="field_sintoma" name="sintoma" ng-model="vm.historiaClinica.sintomaId" ng-options="sintoma.id as sintoma.descripcion for sintoma in vm.sintomas | orderBy:'id'">
                 <option value=""></option>
             </select>
         </div>

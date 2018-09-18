@@ -25,7 +25,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="sintoma in vm.sintomas track by sintoma.id">
-                    <td><a ui-sref="sintoma-detail({id:sintoma.id})">{{sintoma.id}}</a></td>
+                    <td><a ui-sref="sintoma-detail({id:sintoma.id})">{{sintoma.descripcion}}</a></td>
                     <td>{{sintoma.descripcion}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

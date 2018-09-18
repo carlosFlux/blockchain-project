@@ -62,7 +62,7 @@ public class HistoriaClinicaResource {
 			throw new BadRequestAlertException("A new historiaClinica cannot already have an ID", ENTITY_NAME,
 					"idexists");
 		}
-		HistoriaClinicaDTO result = historiaClinicaService.save(historiaClinicaDTO);
+		HistoriaClinicaDTO result = historiaClinicaService.save(historiaClinicaDTO).getOperationResult();
 		return ResponseEntity.created(new URI("/api/historia-clinicas/" + result.getId()))
 				.headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString())).body(result);
 	}
@@ -87,7 +87,7 @@ public class HistoriaClinicaResource {
 		if (historiaClinicaDTO.getId() == null) {
 			return createHistoriaClinica(historiaClinicaDTO);
 		}
-		HistoriaClinicaDTO result = historiaClinicaService.save(historiaClinicaDTO);
+		HistoriaClinicaDTO result = historiaClinicaService.save(historiaClinicaDTO).getOperationResult();
 		return ResponseEntity.ok()
 				.headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, historiaClinicaDTO.getId().toString()))
 				.body(result);
@@ -103,7 +103,7 @@ public class HistoriaClinicaResource {
 	@Timed
 	public List<HistoriaClinicaDTO> getAllHistoriaClinicas() {
 		log.debug("REST request to get all HistoriaClinicas");
-		return historiaClinicaService.findAll();
+		return historiaClinicaService.findAll().getOperationResult();
 	}
 
 	/**

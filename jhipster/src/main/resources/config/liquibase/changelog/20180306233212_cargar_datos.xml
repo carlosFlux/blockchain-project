@@ -12,11 +12,23 @@
 	<property name="floatType" value="float4" dbms="postgresql, h2" />
 	<property name="floatType" value="float" dbms="mysql, oracle, mssql" />
 
-	<!-- Added permission to admin -->
+
 	<changeSet id="20180306233211-1" author="jhipster">
-		<loadData encoding="UTF-8" file="config/liquibase/users_authorities2.csv"
-			separator=";" tableName="jhi_user_authority" />
+		<loadData encoding="UTF-8" file="config/liquibase/datos/sintomas.csv"
+			separator=";" tableName="sintoma" />
 	</changeSet>
-	<!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets 
-		here, do not remove -->
+
+	<changeSet id="20180306233211-2" author="jhipster">
+		<loadData encoding="UTF-8" file="config/liquibase/datos/medicos.csv"
+			separator=";" tableName="medico" />
+	</changeSet>
+
+	<changeSet id="20180306233211-3" author="jhipster">
+		<loadData encoding="UTF-8" file="config/liquibase/datos/pacientes.csv"
+			separator=";" tableName="paciente" />
+	</changeSet>
+	<changeSet id="20180306233211-4" author="jhipster">
+		<loadData encoding="UTF-8" file="config/liquibase/datos/instituciones.csv"
+			separator=";" tableName="institucion" />
+	</changeSet>
 </databaseChangeLog>

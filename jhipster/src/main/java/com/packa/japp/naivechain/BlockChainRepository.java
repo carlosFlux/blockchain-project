@@ -57,7 +57,7 @@ public class BlockChainRepository {
 		return hcsToReturn;
 	}
 
-	public void save(HistoriaClinica historiaClinica) {
+	public String save(HistoriaClinica historiaClinica) {
 		Observation localObservation = new Observation();
 		localObservation.setId(historiaClinica.getId().toString());
 		localObservation.setComments(historiaClinica.getSintoma().getDescripcion());
@@ -78,5 +78,6 @@ public class BlockChainRepository {
 
 		String localRestResponse = restTemplate.postForObject(Constants.URI_API + "/mineBlock", requestBody,
 				String.class);
+		return localRestResponse;
 	}
 }

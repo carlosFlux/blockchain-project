@@ -3,6 +3,7 @@ var CryptoJS = require("crypto-js");
 var express = require("express");
 var bodyParser = require('body-parser');
 var WebSocket = require("ws");
+var Storage = require('node-storage');
 
 var http_port = process.env.HTTP_PORT || 3001;
 var p2p_port = process.env.P2P_PORT || 6001;
@@ -39,6 +40,19 @@ var getGenesisBlock = () => {
 var blockchain = [getGenesisBlock()];
 
 var initHttpServer = () => {
+    var store = new Storage('naiveDatabase');
+   
+    var db=  store.get('blockchainKey');
+     if (!db){
+         store.put('blockchainKey', blockchain);
+         console.log('Database not found, creating new one');
+     }
+     else{
+        console.log('Database was found');
+        blockchain = db; 
+        console.log('Content was:' + JSON.stringify(blockchain));
+     }
+
     var app = express();
     app.use(bodyParser.json());
 
@@ -46,7 +60,8 @@ var initHttpServer = () => {
         res.setHeader('Content-Type', 'application/json');
         var blockchainToReturn = blockchain.slice();
         blockchainToReturn.shift();
-        res.send(JSON.stringify(blockchainToReturn))
+        var respuesta = JSON.stringify(blockchainToReturn);
+        res.send("asdas "+respuesta)
     });
 
     app.post('/mineBlock', (req, res) => {
@@ -63,6 +78,8 @@ var initHttpServer = () => {
         connectToPeers([req.body.peer]);
         res.send();
     });
+
+   
     app.listen(http_port, () => console.log('Listening http on port: ' + http_port));
 };
 

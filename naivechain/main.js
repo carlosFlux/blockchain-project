@@ -38,9 +38,9 @@ var getGenesisBlock = () => {
 };
 
 var blockchain = [getGenesisBlock()];
+var store = new Storage('naiveDatabase');
 
 var initHttpServer = () => {
-    var store = new Storage('naiveDatabase');
    
     var db=  store.get('blockchainKey');
      if (!db){
@@ -61,7 +61,7 @@ var initHttpServer = () => {
         var blockchainToReturn = blockchain.slice();
         blockchainToReturn.shift();
         var respuesta = JSON.stringify(blockchainToReturn);
-        res.send("asdas "+respuesta)
+        res.send(respuesta)
     });
 
     app.post('/mineBlock', (req, res) => {
@@ -146,6 +146,7 @@ var calculateHash = (index, previousHash, timestamp, data) => {
 var addBlock = (newBlock) => {
     if (isValidNewBlock(newBlock, getLatestBlock())) {
         blockchain.push(newBlock);
+        store.put('blockchainKey', blockchain);
     }
 };
 

@@ -61,7 +61,7 @@ var initHttpServer = () => {
         var blockchainToReturn = blockchain.slice();
         blockchainToReturn.shift();
         var respuesta = JSON.stringify(blockchainToReturn);
-        res.send(respuesta)
+        res.send(" \n\n\ Cadena de bloques: \n\n\n\n\n" + respuesta)
     });
 
     app.post('/mineBlock', (req, res) => {

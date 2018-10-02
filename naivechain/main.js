@@ -20,7 +20,7 @@ class Block {
 }
 
 class Observation {
-    constructor(rt,cm) {
+    constructor(rt, cm) {
         this.resourceType = rt;
         this.comments = cm;
     }
@@ -34,24 +34,24 @@ var MessageType = {
 };
 
 var getGenesisBlock = () => {
-    return new Block(0, "0", 1465154705, new Observation("Observation","INICIAL"), "816534932c2b7154836da6afc367695e6337db8a921823784c14378abed4f7d7");
+    return new Block(0, "0", 1465154705, new Observation("Observation", "INICIAL"), "816534932c2b7154836da6afc367695e6337db8a921823784c14378abed4f7d7");
 };
 
 var blockchain = [getGenesisBlock()];
 var store = new Storage('naiveDatabase');
 
 var initHttpServer = () => {
-   
-    var db=  store.get('blockchainKey');
-     if (!db){
-         store.put('blockchainKey', blockchain);
-         console.log('Database not found, creating new one');
-     }
-     else{
+
+    var db = store.get('blockchainKey');
+    if (!db) {
+        store.put('blockchainKey', blockchain);
+        console.log('Database not found, creating new one');
+    }
+    else {
         console.log('Database was found');
-        blockchain = db; 
+        blockchain = db;
         console.log('Content was:' + JSON.stringify(blockchain));
-     }
+    }
 
     var app = express();
     app.use(bodyParser.json());
@@ -79,13 +79,17 @@ var initHttpServer = () => {
         res.send();
     });
 
-   
+
+    app.get('/', function (req, res) {
+        res.sendFile(__dirname + '/ws.html');
+    })
+
     app.listen(http_port, () => console.log('Listening http on port: ' + http_port));
 };
 
 
 var initP2PServer = () => {
-    var server = new WebSocket.Server({port: p2p_port});
+    var server = new WebSocket.Server({ port: p2p_port });
     server.on('connection', ws => initConnection(ws));
     console.log('listening websocket p2p port on: ' + p2p_port);
 
@@ -223,9 +227,9 @@ var isValidChain = (blockchainToValidate) => {
 };
 
 var getLatestBlock = () => blockchain[blockchain.length - 1];
-var queryChainLengthMsg = () => ({'type': MessageType.QUERY_LATEST});
-var queryAllMsg = () => ({'type': MessageType.QUERY_ALL});
-var responseChainMsg = () =>({
+var queryChainLengthMsg = () => ({ 'type': MessageType.QUERY_LATEST });
+var queryAllMsg = () => ({ 'type': MessageType.QUERY_ALL });
+var responseChainMsg = () => ({
     'type': MessageType.RESPONSE_BLOCKCHAIN, 'data': JSON.stringify(blockchain)
 });
 var responseLatestMsg = () => ({

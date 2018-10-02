@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 var WebSocket = require("ws");
 var Storage = require('node-storage');
 
+var app = express();
 var http_port = process.env.HTTP_PORT || 3001;
 var p2p_port = process.env.P2P_PORT || 6001;
 var initialPeers = process.env.PEERS ? process.env.PEERS.split(',') : [];
@@ -53,7 +54,6 @@ var initHttpServer = () => {
         console.log('Content was:' + JSON.stringify(blockchain));
     }
 
-    var app = express();
     app.use(bodyParser.json());
 
     app.get('/blocks', (req, res) => {

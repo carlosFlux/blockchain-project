@@ -1,17 +1,34 @@
+<link href="../style.css" rel="stylesheet" type="text/css" />
+
 <h1>
-    Web Socket Example
+    Inspector para la cadena de bloques (basado en Websockets)
 </h1>
-<p>
-    open console to see connection.
-</p>
+
 <script>
     var ws = new WebSocket('ws://localhost:6001');
-
+    var contador = -1;
     ws.onopen = function () {
         console.log('websocket is connected ...')
+        document.getElementById("cont").value = contador;
+        document.getElementById("cadena").value = "Cadena vacia"
     }
 
     ws.onmessage = function (ev) {
         console.log(ev);
+        contador++;
+        document.getElementById("cont").value = contador;
+        document.getElementById("cadena").value = JSON.parse(ev.data).data;
     }
 </script>
+
+<h1>
+    Nuevo bloque recibido:
+    <p>
+        <input type="text" id="cont">
+    </p>
+
+    <p>
+        <textarea id="cadena" rows="5" cols="100">
+        </textarea>
+    </p>
+</h1>

@@ -88,7 +88,7 @@ var initHttpServer = () => {
 
     app.get('/', function (req, res, next) {
         console.log('Initial peers are:' + initialPeers);
-        res.render('index', { p2p_port: p2p_port, initialPeers: initialPeers, title: " Bienvenido al Inspector de Blockchain " });
+        res.render('index', { p2p_port: p2p_port, title: " Bienvenido al Inspector de Blockchain " });
     });
 
     app.listen(http_port, () => console.log('Listening http on port: ' + http_port));

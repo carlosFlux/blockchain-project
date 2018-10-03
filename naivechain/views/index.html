@@ -1,8 +1,13 @@
 <link href="../style.css" rel="stylesheet" type="text/css" />
 
 <h1>
-    Inspector para la cadena de bloques (basado en Websockets)
+    <%= title %>
 </h1>
+
+<h2>Escuchando por WebSocket en el puerto:
+    <%= p2p_port %>
+</h2>
+
 
 <script>
     var ws = new WebSocket('ws://localhost:6001');
@@ -10,19 +15,24 @@
     ws.onopen = function () {
         console.log('websocket is connected ...')
         document.getElementById("cont").value = contador;
-        document.getElementById("cadena").value = "Cadena vacia"
+        document.getElementById("cadena").value = "Cadena vacia.";
     }
 
     ws.onmessage = function (ev) {
         console.log(ev);
         contador++;
         document.getElementById("cont").value = contador;
-        document.getElementById("cadena").value = JSON.parse(ev.data).data;
+        document.getElementById("label1").value = "Nuevo bloque recibido.";
+        var datos = JSON.parse(ev.data).data;
+        if (datos) {
+            document.getElementById("cadena").value = datos;
+        }
+
     }
 </script>
 
 <h1>
-    Nuevo bloque recibido:
+    <p id="label1"></p>
     <p>
         <input type="text" id="cont">
     </p>

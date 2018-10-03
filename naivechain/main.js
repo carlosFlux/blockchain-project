@@ -5,10 +5,21 @@ var bodyParser = require('body-parser');
 var WebSocket = require("ws");
 var Storage = require('node-storage');
 
+
 var app = express();
 var http_port = process.env.HTTP_PORT || 3001;
 var p2p_port = process.env.P2P_PORT || 6001;
 var initialPeers = process.env.PEERS ? process.env.PEERS.split(',') : [];
+
+
+// view engine setup
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+
+app.get('/', function (req, res, next) {
+    res.render('index', { p2p_port: p2p_port, title: " Bienvenido al Inspector de Blockchain " });
+});
+
 
 class Block {
     constructor(index, previousHash, timestamp, data, hash) {
@@ -78,11 +89,6 @@ var initHttpServer = () => {
         connectToPeers([req.body.peer]);
         res.send();
     });
-
-
-    app.get('/', function (req, res) {
-        res.sendFile(__dirname + '/ws.html');
-    })
 
     app.listen(http_port, () => console.log('Listening http on port: ' + http_port));
 };

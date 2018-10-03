@@ -11,16 +11,6 @@ var http_port = process.env.HTTP_PORT || 3001;
 var p2p_port = process.env.P2P_PORT || 6001;
 var initialPeers = process.env.PEERS ? process.env.PEERS.split(',') : [];
 
-
-// view engine setup
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
-
-app.get('/', function (req, res, next) {
-    res.render('index', { p2p_port: p2p_port, title: " Bienvenido al Inspector de Blockchain " });
-});
-
-
 class Block {
     constructor(index, previousHash, timestamp, data, hash) {
         this.index = index;
@@ -82,12 +72,23 @@ var initHttpServer = () => {
         console.log('block added: ' + JSON.stringify(newBlock));
         res.send();
     });
+
     app.get('/peers', (req, res) => {
         res.send(sockets.map(s => s._socket.remoteAddress + ':' + s._socket.remotePort));
     });
+    
     app.post('/addPeer', (req, res) => {
         connectToPeers([req.body.peer]);
         res.send();
+    });
+
+    // view engine setup
+    app.engine('html', require('ejs').renderFile);
+    app.set('view engine', 'html');
+
+    app.get('/', function (req, res, next) {
+        console.log('Initial peers are:' + initialPeers);
+        res.render('index', { p2p_port: p2p_port, initialPeers: initialPeers, title: " Bienvenido al Inspector de Blockchain " });
     });
 
     app.listen(http_port, () => console.log('Listening http on port: ' + http_port));

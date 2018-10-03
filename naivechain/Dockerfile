@@ -3,8 +3,8 @@ FROM node:4.6
 RUN mkdir /naivechain
 ADD package.json /naivechain/
 ADD main.js /naivechain/
-ADD ws.html /naivechain/
-ADD style.css /naivechain/
+RUN mkdir /naivechain/views
+ADD /views/index.html /naivechain/views
 
 RUN cd /naivechain && npm install
 

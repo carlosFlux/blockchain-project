@@ -1,6 +1,6 @@
 package com.packa.japp.service.dto;
 
-public class OperatioWrapper<T> {
+public class OperationWrapper<T> {
 
 	private T operationResult;
 	private OperationStatusEnum status;

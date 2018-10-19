@@ -15,7 +15,7 @@ import com.packa.japp.naivechain.BlockChainRepository;
 import com.packa.japp.repository.HistoriaClinicaRepository;
 import com.packa.japp.service.HistoriaClinicaService;
 import com.packa.japp.service.dto.HistoriaClinicaDTO;
-import com.packa.japp.service.dto.OperatioWrapper;
+import com.packa.japp.service.dto.OperationWrapper;
 import com.packa.japp.service.dto.OperationStatusEnum;
 import com.packa.japp.service.mapper.HistoriaClinicaMapper;
 
@@ -49,9 +49,9 @@ public class HistoriaClinicaServiceImpl implements HistoriaClinicaService {
 	 * @return the persisted entity
 	 */
 	@Override
-	public OperatioWrapper<HistoriaClinicaDTO> save(HistoriaClinicaDTO historiaClinicaDTO) {
+	public OperationWrapper<HistoriaClinicaDTO> save(HistoriaClinicaDTO historiaClinicaDTO) {
 		log.debug("Request to save HistoriaClinica : {}", historiaClinicaDTO);
-		OperatioWrapper<HistoriaClinicaDTO> wrapper = new OperatioWrapper<HistoriaClinicaDTO>();
+		OperationWrapper<HistoriaClinicaDTO> wrapper = new OperationWrapper<HistoriaClinicaDTO>();
 		HistoriaClinica historiaClinica = this.saveHc(historiaClinicaDTO);
 		HistoriaClinicaDTO dto = historiaClinicaMapper.toDto(historiaClinica);
 		wrapper.setOperationResult(dto);
@@ -85,12 +85,12 @@ public class HistoriaClinicaServiceImpl implements HistoriaClinicaService {
 	 */
 	@Override
 	@Transactional(readOnly = true)
-	public OperatioWrapper<List<HistoriaClinicaDTO>> findAll() {
+	public OperationWrapper<List<HistoriaClinicaDTO>> findAll() {
 		log.debug("Request to get all HistoriaClinicas");
 		List<HistoriaClinicaDTO> listaLocal = historiaClinicaRepository.findAll().stream()
 				.map(historiaClinicaMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
 
-		OperatioWrapper<List<HistoriaClinicaDTO>> wrapper = new OperatioWrapper<List<HistoriaClinicaDTO>>();
+		OperationWrapper<List<HistoriaClinicaDTO>> wrapper = new OperationWrapper<List<HistoriaClinicaDTO>>();
 
 		try {
 			List<HistoriaClinicaDTO> localHcsToSave = blockChainRepository.findAll(listaLocal);

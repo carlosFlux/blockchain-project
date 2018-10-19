@@ -24,7 +24,22 @@
         var datos = JSON.parse(ev.data).data;
         if (datos) {
             document.getElementById("cadena").value = datos;
+
+            datos.replace("[", "");
+            datos.replace("]", "");
+            var datos2 = JSON.parse(datos);
+            var datos3 = datos2[0].data.comments;
+            var hc = JSON.parse(datos3);
+
+            document.getElementById("pac").value = hc.paciente;
+            document.getElementById("med").value = hc.medico;
+            document.getElementById("inst").value = hc.institucion;
+            document.getElementById("sin").value = hc.sintoma;
+
         }
+
+
+
 
     }
 </script>
@@ -38,5 +53,18 @@
     <p>
         <textarea id="cadena" rows="5" cols="100">
         </textarea>
+    </p>
+
+    <p>
+        Paciente: <input type="text" id="pac">
+    </p>
+    <p>
+        Medico: <input type="text" id="med">
+    </p>
+    <p>
+        Institucion: <input type="text" id="inst">
+    </p>
+    <p>
+        Sintoma: <input type="text" id="sin">
     </p>
 </h1>

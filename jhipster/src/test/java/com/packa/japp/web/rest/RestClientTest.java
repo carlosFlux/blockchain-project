@@ -1,6 +1,5 @@
 package com.packa.japp.web.rest;
 
-
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.model.dstu2.resource.Observation;
 import ca.uhn.fhir.model.dstu2.resource.Patient;
@@ -20,121 +19,114 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Map;
 
 @RunWith(SpringRunner.class)
+@Ignore
 public class RestClientTest {
 
-    private static final String URI_API = "http://192.168.0.19:3002";
+	private static final String URI_API = "http://192.168.0.19:3002";
 
+	@Test
+	public void getBlockChain() throws Exception {
+		final String uri = "http://node1:3002/blocks";
 
-    @Test
-    public void getBlockChain() throws Exception {
-        final String uri = "http://node1:3002/blocks";
+		RestTemplate restTemplate = new RestTemplate();
 
-        RestTemplate restTemplate = new RestTemplate();
+		/*
+		 * List<HttpMessageConverter<?>> messageConverters = new ArrayList<>();
+		 * MappingJackson2HttpMessageConverter jsonMessageConverter = new
+		 * MappingJackson2HttpMessageConverter();
+		 * jsonMessageConverter.setObjectMapper(objectMapper);
+		 * messageConverters.add(jsonMessageConverter);
+		 * restTemplate.setMessageConverters(messageConverters);
+		 */
 
-     /*
-        List<HttpMessageConverter<?>> messageConverters = new ArrayList<>();
-        MappingJackson2HttpMessageConverter jsonMessageConverter = new MappingJackson2HttpMessageConverter();
-        jsonMessageConverter.setObjectMapper(objectMapper);
-        messageConverters.add(jsonMessageConverter);
-        restTemplate.setMessageConverters(messageConverters);*/
+		// String result = restTemplate.getForObject(uri, String.class);
 
+		// objectMapper.readValue(result,Block[].class);
 
-        //String result = restTemplate.getForObject(uri, String.class);
+		Block[] result = restTemplate.getForObject(uri, Block[].class);
 
-        //objectMapper.readValue(result,Block[].class);
+		FhirContext fhirCtx = FhirContext.forDstu2();
 
-        Block[] result = restTemplate.getForObject(uri, Block[].class);
+		IParser parser = fhirCtx.newJsonParser();
 
-        FhirContext fhirCtx = FhirContext.forDstu2();
+		for (Block item : result) {
+			Map itemMap = (Map) item.getData();
+			System.out.println(JSONObject.toJSONString(itemMap));
+			Observation localObservation = parser.parseResource(Observation.class, JSONObject.toJSONString(itemMap));
+		}
 
-        IParser parser = fhirCtx.newJsonParser();
+		/*
+		 * // HttpHeaders HttpHeaders headers = new HttpHeaders();
+		 * 
+		 * headers.setAccept(Arrays.asList(new MediaType[] { MediaType.APPLICATION_JSON
+		 * })); // Request to return JSON format
+		 * headers.setContentType(MediaType.APPLICATION_JSON);
+		 * //headers.set("my_other_key", "my_other_value");
+		 * 
+		 * // HttpEntity<String>: To get result as String. HttpEntity<Block> entity =
+		 * new HttpEntity<Block>(headers);
+		 * 
+		 * // RestTemplate RestTemplate restTemplate = new RestTemplate();
+		 * 
+		 * // Send request with GET method, and Headers. ResponseEntity<Block[]>
+		 * response = restTemplate.exchange(uri, HttpMethod.GET, entity, Block[].class);
+		 * 
+		 * Block[] result = response.getBody();
+		 * 
+		 */
 
-        for (Block item : result) {
-            Map itemMap = (Map) item.getData();
-            System.out.println(JSONObject.toJSONString(itemMap));
-            Observation localObservation = parser.parseResource(Observation.class, JSONObject.toJSONString(itemMap));
-        }
+	}
 
+	@Ignore
+	public void encodingTest() throws Exception {
 
-/*
-        // HttpHeaders
-        HttpHeaders headers = new HttpHeaders();
+		FhirContext ctx = FhirContext.forDstu2();
 
-        headers.setAccept(Arrays.asList(new MediaType[] { MediaType.APPLICATION_JSON }));
-        // Request to return JSON format
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        //headers.set("my_other_key", "my_other_value");
+		Patient patient = new Patient();
+		patient.addIdentifier().setSystem("http://example.com/fictitious-mrns").setValue("MRN001");
+		patient.addName().setUse(NameUseEnum.OFFICIAL).addFamily("Tester").addGiven("John").addGiven("Q");
 
-        // HttpEntity<String>: To get result as String.
-        HttpEntity<Block> entity = new HttpEntity<Block>(headers);
+		Observation localObservation = new Observation();
+		localObservation.setComments("nueva observacion");
 
-        // RestTemplate
-        RestTemplate restTemplate = new RestTemplate();
+		String encoded = ctx.newJsonParser().setPrettyPrint(true).encodeResourceToString(localObservation);
+		System.out.println(encoded);
 
-        // Send request with GET method, and Headers.
-        ResponseEntity<Block[]> response = restTemplate.exchange(uri, HttpMethod.GET, entity, Block[].class);
+		IParser parser = ctx.newJsonParser();
 
-        Block[] result = response.getBody();
+		Observation ob = parser.parseResource(Observation.class, encoded);
 
-*/
+		System.out.println(ob.getComments());
+	}
 
-    }
+	@Test
+	public void postTest() throws Exception {
 
+		FhirContext fhirCtx = FhirContext.forDstu2();
 
-    @Ignore
-    public void encodingTest() throws Exception {
+		Observation localObservation = new Observation();
+		localObservation.setComments("nueva observacion");
 
-        FhirContext ctx = FhirContext.forDstu2();
+		String encoded = fhirCtx.newJsonParser().encodeResourceToString(localObservation);
 
-        Patient patient = new Patient();
-        patient.addIdentifier().setSystem("http://example.com/fictitious-mrns").setValue("MRN001");
-        patient.addName().setUse(NameUseEnum.OFFICIAL).addFamily("Tester").addGiven("John").addGiven("Q");
+		RestTemplate restTemplate = new RestTemplate();
 
-        Observation localObservation = new Observation();
-        localObservation.setComments("nueva observacion");
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Accept", MediaType.APPLICATION_JSON_VALUE);
+		headers.setContentType(MediaType.APPLICATION_JSON);
 
-        String encoded = ctx.newJsonParser().setPrettyPrint(true).encodeResourceToString(localObservation);
-        System.out.println(encoded);
+		StringBuilder localSb = new StringBuilder();
 
+		localSb.append("{\"data\" : ");
+		localSb.append(encoded);
+		localSb.append("}");
 
-        IParser parser = ctx.newJsonParser();
+		System.out.println(localSb.toString());
 
-        Observation ob = parser.parseResource(Observation.class, encoded);
+		HttpEntity<String> requestBody = new HttpEntity<>(localSb.toString(), headers);
 
-        System.out.println(ob.getComments());
-    }
+		String localRestResponse = restTemplate.postForObject(URI_API + "/mineBlock", requestBody, String.class);
 
+	}
 
-
-
-    @Test
-    public void postTest() throws Exception {
-
-        FhirContext fhirCtx = FhirContext.forDstu2();
-
-        Observation localObservation = new Observation();
-        localObservation.setComments("nueva observacion");
-
-        String encoded = fhirCtx.newJsonParser().encodeResourceToString(localObservation);
-
-        RestTemplate restTemplate = new RestTemplate();
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Accept", MediaType.APPLICATION_JSON_VALUE);
-        headers.setContentType(MediaType.APPLICATION_JSON);
-
-        StringBuilder localSb = new StringBuilder();
-
-        localSb.append("{\"data\" : ");
-        localSb.append(encoded);
-        localSb.append("}");
-
-        System.out.println(localSb.toString());
-
-        HttpEntity<String> requestBody = new HttpEntity<>(localSb.toString(), headers);
-
-        String localRestResponse = restTemplate.postForObject(URI_API + "/mineBlock", requestBody, String.class);
-
-    }
-
-    }
+}

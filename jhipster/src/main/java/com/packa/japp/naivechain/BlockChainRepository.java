@@ -27,6 +27,8 @@ public class BlockChainRepository {
 	private final RestTemplate restTemplate = new RestTemplate();
 
 	private final FhirContext fhirCtx = FhirContext.forDstu2();
+	
+	private HistoriaMapper mapper = new HistoriaMapper();
 
 	public List<HistoriaClinicaDTO> findAll(List<HistoriaClinicaDTO> hcsParameter) {
 
@@ -60,10 +62,11 @@ public class BlockChainRepository {
 	public String save(HistoriaClinica historiaClinica) {
 		Observation localObservation = new Observation();
 		localObservation.setId(historiaClinica.getId().toString());
-		localObservation.setComments(historiaClinica.getSintoma().getDescripcion());
+		localObservation.setComments(mapper.convertirHistoria(historiaClinica));
 
 		String encodedDstu2 = fhirCtx.newJsonParser().setPrettyPrint(true).encodeResourceToString(localObservation);
-
+		log.info("Historia encodeada: {}", encodedDstu2);
+		
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Accept", MediaType.APPLICATION_JSON_VALUE);
 		headers.setContentType(MediaType.APPLICATION_JSON);

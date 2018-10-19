@@ -1,7 +1,7 @@
 package com.packa.japp.service;
 
 import com.packa.japp.service.dto.HistoriaClinicaDTO;
-import com.packa.japp.service.dto.OperatioWrapper;
+import com.packa.japp.service.dto.OperationWrapper;
 
 import java.util.List;
 
@@ -17,14 +17,14 @@ public interface HistoriaClinicaService {
 	 *            the entity to save
 	 * @return the persisted entity
 	 */
-	OperatioWrapper<HistoriaClinicaDTO> save(HistoriaClinicaDTO historiaClinicaDTO);
+	OperationWrapper<HistoriaClinicaDTO> save(HistoriaClinicaDTO historiaClinicaDTO);
 
 	/**
 	 * Get all the historiaClinicas.
 	 *
 	 * @return the list of entities
 	 */
-	OperatioWrapper<List<HistoriaClinicaDTO>> findAll();
+	OperationWrapper<List<HistoriaClinicaDTO>> findAll();
 
 	/**
 	 * Get the "id" historiaClinica.

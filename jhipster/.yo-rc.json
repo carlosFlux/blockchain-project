@@ -3,7 +3,7 @@
     "promptValues": {
       "packageName": "com.packa.japp"
     },
-    "jhipsterVersion": "4.13.0",
+    "jhipsterVersion": "4.13.3",
     "baseName": "japp",
     "packageName": "com.packa.japp",
     "packageFolder": "com/packa/japp",
@@ -28,6 +28,8 @@
     "applicationType": "monolith",
     "testFrameworks": [],
     "jhiPrefix": "jhi",
-    "enableTranslation": false
+    "enableTranslation": false,
+    "cacheProvider": "no",
+    "enableHibernateCache": false
   }
 }

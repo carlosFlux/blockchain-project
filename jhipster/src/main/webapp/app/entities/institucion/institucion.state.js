@@ -10,18 +10,14 @@
     function stateConfig($stateProvider) {
         $stateProvider
         .state('institucion', {
-            parent: 'entity',
+            parent: 'app',
             url: '/institucion',
+            templateUrl: 'app/entities/institucion/institucions.html',
+            controller: 'InstitucionController',
+            controllerAs: 'vm',
             data: {
                 authorities: ['ROLE_USER'],
                 pageTitle: 'Institucions'
-            },
-            views: {
-                'content@': {
-                    templateUrl: 'app/entities/institucion/institucions.html',
-                    controller: 'InstitucionController',
-                    controllerAs: 'vm'
-                }
             },
             resolve: {
             }
@@ -33,13 +29,9 @@
                 authorities: ['ROLE_USER'],
                 pageTitle: 'Institucion'
             },
-            views: {
-                'content@': {
-                    templateUrl: 'app/entities/institucion/institucion-detail.html',
-                    controller: 'InstitucionDetailController',
-                    controllerAs: 'vm'
-                }
-            },
+            templateUrl: 'app/entities/institucion/institucion-detail.html',
+            controller: 'InstitucionDetailController',
+            controllerAs: 'vm',
             resolve: {
                 entity: ['$stateParams', 'Institucion', function($stateParams, Institucion) {
                     return Institucion.get({id : $stateParams.id}).$promise;

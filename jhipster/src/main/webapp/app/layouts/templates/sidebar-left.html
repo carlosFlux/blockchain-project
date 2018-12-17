@@ -1,0 +1,95 @@
+<div class="sidebar-inner c-overflow">    
+    <!-- Begin Main Menu -->
+    <ul class="main-menu">
+        <li data-ui-sref-active="active">
+            <a data-ui-sref="ocuppation" data-ng-click="ctx.sidebarStat($event)">
+                <i class="zmdi zmdi-time"></i> 
+                <span data-translate="global.menu.kpis.ocuppation">Ocupación</span>
+            </a>
+        </li>
+        <li data-ui-sref-active="active">
+            <a data-ui-sref="trucks" data-ng-click="ctx.sidebarStat($event)">
+                <i class="zmdi zmdi-truck"></i> 
+                <span data-translate="global.menu.kpis.trucks">Camiones</span>
+            </a>
+        </li>
+        <li data-ui-sref-active="active">
+            <a data-ui-sref="equiments" data-ng-click="ctx.sidebarStat($event)">
+                <i class="zmdi zmdi-wrench"></i> 
+                <span data-translate="global.menu.kpis.equipments">Maquinas</span>
+            </a>
+        </li>        
+        <!--li data-ui-sref-active="active">
+            <a data-ui-sref="home" data-ng-click="ctx.sidebarStat($event)">
+                <i class="zmdi zmdi-home"></i> Home
+            </a>
+        </li-->
+        <!-- Begin ROLE_ADMIN Adminitration -->
+        <li class="sub-menu" data-ng-class="{active: ctx.$state.includes('admin')}" has-authority="ROLE_ADMIN">
+            <a href="" toggle-submenu>
+                <i class="zmdi zmdi-puzzle-piece zmdi-hc-fw"></i> 
+                <span class="hidden-sm" data-translate="global.menu.admin.main">Administration</span>
+            </a>
+            
+            <ul>
+                <li>
+                    <a data-ui-sref-active="active" data-ui-sref="user-management" 
+                       data-ng-click="ctx.sidebarStat($event)">
+                        <span data-translate="global.menu.admin.userManagement">Users</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="sub-menu" data-ng-class="{active: ctx.$state.includes('monitor')}" has-authority="ROLE_ADMIN">
+            <a href="" toggle-submenu>
+                <i class="zmdi zmdi-desktop-windows zmdi-hc-fw"></i>
+                <span class="hidden-sm" data-translate="global.menu.admin.monitor">Monitor</span>
+            </a>
+            
+            <ul>
+                <li>
+                    <a data-ui-sref-active="active" data-ui-sref="jhi-metrics" 
+                       data-ng-click="ctx.sidebarStat($event)">
+                        <span data-translate="global.menu.admin.metrics">Metrics</span>
+                    </a>
+                </li>
+                <li>
+                    <a data-ui-sref-active="active" data-ui-sref="jhi-health" 
+                       data-ng-click="ctx.sidebarStat($event)">
+                         <span data-translate="global.menu.admin.health">Health</span>
+                    </a>
+                </li>
+                <li>
+                    <a data-ui-sref-active="active" data-ui-sref="jhi-configuration" 
+                       data-ng-click="ctx.sidebarStat($event)">
+                         <span data-translate="global.menu.admin.configuration">Configuration</span>
+                    </a>
+                </li>
+                <li>
+                    <a data-ui-sref-active="active" data-ui-sref="audits" 
+                       data-ng-click="ctx.sidebarStat($event)">
+                         <span data-translate="global.menu.admin.audits">Audits</span>
+                    </a>
+                </li>
+                <li>
+                    <a data-ui-sref-active="active" data-ui-sref="logs" 
+                       data-ng-click="ctx.sidebarStat($event)">
+                         <span data-translate="global.menu.admin.logs">Logs</span>
+                    </a>
+                </li>
+                <!--li>
+                    <a data-ui-sref-active="active" data-ui-sref="docs" 
+                       data-ng-click="ctx.sidebarStat($event)">
+                         <span data-translate="global.menu.admin.apidocs">API</span>
+                    </a>
+                </li-->                
+            </ul>
+        </li>
+        <!-- / End ROLE_ADMIN Adminitration -->
+        
+    </ul>
+    <!-- /End Main Menu -->
+    <div class="row">
+        <div class="col-md-12 by-flux-black p-fixed" style="bottom: 0px;"></div>
+    </div>
+</div>

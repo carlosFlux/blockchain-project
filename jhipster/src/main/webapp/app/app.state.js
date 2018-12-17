@@ -8,7 +8,22 @@
     stateConfig.$inject = ['$stateProvider'];
 
     function stateConfig($stateProvider) {
-        $stateProvider.state('app', {
+        $stateProvider
+            .state('app', {
+                abstract: true,
+                templateUrl: 'app/layouts/templates/common.html',
+                resolve: {
+                    authorize: ['Auth',
+                        function (Auth) {
+                            return Auth.authorize();
+                        }
+                    ]
+                },
+                onEnter: function(){
+                    angular.element('body').removeClass('login');
+                }
+            })
+            /*.state('app', {
             abstract: true,
             views: {
                 'navbar@': {
@@ -24,6 +39,6 @@
                     }
                 ]
             }
-        });
+        });*/
     }
 })();

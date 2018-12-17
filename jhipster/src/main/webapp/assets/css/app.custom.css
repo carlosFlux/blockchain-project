@@ -1,0 +1,302 @@
+/*
+ * Raleway Regular Font
+ */
+@font-face {
+  font-family: raleway;
+  src: url('../fonts/Raleway/rawline-400.eot');
+  src: url('../fonts/Raleway/rawline-400.eot?#iefix') format('embedded-opentype'), url('../fonts/Raleway/rawline-400.woff') format('woff'), url('../fonts/Raleway/rawline-400.ttf') format('truetype'), url('../fonts/Raleway/rawline-400.svg#icon') format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/*
+ * Raleway Medium Font
+ */
+@font-face {
+  font-family: raleway-medium;
+  src: url('../fonts/Raleway/rawline-500.eot');
+  src: url('../fonts/Raleway/rawline-500.eot?#iefix') format('embedded-opentype'), url('../fonts/Raleway/rawline-500.woff') format('woff'), url('../fonts/Raleway/rawline-500.ttf') format('truetype'), url('../fonts/Raleway/rawline-500.svg#icon') format('svg');
+  font-weight: 500;
+  font-style: normal;
+}
+
+/*
+ * Raleway Bold Font
+ */
+@font-face {
+  font-family: raleway-bold;
+  src: url('../fonts/Raleway/rawline-700.eot');
+  src: url('../fonts/Raleway/rawline-700.eot?#iefix') format('embedded-opentype'), url('../fonts/Raleway/rawline-700.woff') format('woff'), url('../fonts/Raleway/rawline-700.ttf') format('truetype'), url('../fonts/Raleway/rawline-700.svg#icon') format('svg');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/*
+ * Raleway Regular Font
+ */
+@font-face {
+  font-family: roboto;
+  src: url('../fonts/roboto/Roboto-Regular-webfont.eot');
+  src: url('../fonts/Raleway/Roboto-Regular-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/roboto/Roboto-Regular-webfont.woff') format('woff'), url('../fonts/roboto/Roboto-Regular-webfont.ttf') format('truetype'), url('../fonts/roboto/Roboto-Regular-webfont.svg#icon') format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Login */
+body.login {
+    position: relative;
+    margin: 0;
+    background-image: url(../img/coat.png), url(../img/gpa-bg.jpg);
+    background-size: auto, cover;
+    background-repeat: repeat, no-repeat;
+    background-attachment: fixed, fixed;
+}
+
+.login #main{
+    padding-top: 40px;
+}
+.login-logo{
+    background: url(../img/logo.png) no-repeat center center;
+    min-height: 45px;
+    padding-top: 30px;
+    background-size: contain;
+}
+
+.login-logo > h2{
+    font-family: raleway;
+    color: #ffffff;
+    font-size: 22px;
+    margin-top: 50px;
+}
+
+/* Main top for header-top */
+#main{
+    padding-top: 100px;
+}
+/* Header Menu Custom */
+.ha-menu > ul > li.active > *:not(ul) {
+    box-shadow: inset 0px -5px 0 0px #FF9800;
+}
+.top-menu > li.menu-readonly:not(#toggle-width):before{
+    background-color: rgba(0,0,0, 0);
+}
+/* Profile Picture */
+.profile-picture > img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 3px solid rgba(0, 0, 0, 0.14);
+    box-sizing: content-box;
+    margin-top: -10px;
+    margin-right: -10px;
+    margin-left: 5px;
+}
+/* Admin Options */
+.top-menu.admin-menu > li > a{
+    padding: 8px;
+}
+
+.username, .username:hover{
+    background: transparent;
+    color: #fff;
+    font-size: 14px;
+    font-family: raleway;
+    font-weight: 700;
+    padding: 8px;
+}
+.lc-block .checkbox{
+    margin: 0px 0 0 42px;
+}
+/* Opacity */
+.alpha-black-50{
+    background: rgba(0, 0, 0, .5);
+}
+.alpha-black-70{
+    background: rgba(0, 0, 0, .7);
+}
+
+
+/* Card */
+.card:hover{
+    box-shadow: 0px 0px 25px rgba(153, 153, 153, 0.3);
+}
+.card-header{
+    padding-left: 40px !important;
+}
+.card-header, .card-body{
+    border-radius: 4px !important;
+}
+.card-header h2, .lv-header-alt h2{
+    color: #444 !important;
+    font-family: raleway, Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-shadow: 0 0 1px transparent;
+    text-transform: none;
+    font-weight: 400;
+    font-size: 2rem!important;
+}
+
+.card-header > h2 > img{
+    width: 56px;
+    height: 56px;
+    margin-right: 5px;
+}
+.card-header .actions {
+    top: 8px;
+    right: 100px;
+}
+/* line-wrap icons */
+#menu-trigger.open .line{
+    background: #fff !important;
+}
+#menu-trigger:before {
+    top: 10px;
+    left: 11px;
+    width: 36px;
+    height: 36px;
+    background: rgba(0, 0, 0, 0.3);
+}
+.line-wrap{
+    margin: 0px 10px !important;
+}
+
+/* Button outline custom */
+.btn-outline {
+    border: 1px solid transparent;
+    border-radius: 4px;
+    box-shadow: 0px 0px 0px transparent, 0px 0px 0px transparent !important;
+    background-color: #fff;
+    background-image: none;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 0.9rem 1.5rem;
+    font-family: raleway;
+    text-transform: inherit;
+}
+.btn-outline.dropdown-toggle {
+    padding-right: 22px;
+}
+.btn-outline.dropdown-toggle > i{
+    font-size: 20px;
+    font-weight: 700;
+    position: absolute;
+    margin-top: 3px;
+    margin-left: 5px;
+}
+
+.btn-outline-primary, .btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active {
+    color: #FF5722;
+    border-color:#FF9800;
+}
+.btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active {
+    background: #fff0e2;
+}
+.btn-outline-gray, .btn-outline-gray:hover, .btn-outline-gray:focus, .btn-outline-gray:active {
+    color: #666;
+    border-color:#999;
+}
+.btn-outline-gray:hover, .btn-outline-gray:focus, .btn-outline-gray:active {
+    background: #eee;
+}
+/* btn-outline como acciones de tablas */
+td > .actions > li > .btn-outline {
+    padding: .5rem 1rem !important;
+}
+/* Custom BGM color*/
+.bgm-black{
+    background-color: #222d32 !important;
+}
+.bgm-blue {
+    background-color: #0072bc !important;
+}
+/* Custom btn-icon */
+.btn-icon{
+    width: 32px !important;
+    height: 32px !important;
+}
+
+.ng-table-pager{
+    border-top: 1px solid #f4f4f4;
+    background: transparent;
+}
+/* Custom Form Horizontal */
+.form-horizontal select.form-control{
+    height: 30px !important;
+}
+/* Custom select chosen */
+.chosen-container{
+    width: 100% !important;
+}
+/* Custom Calendar */
+#calendar .fc-toolbar{
+    height: 30px;
+    background-image: none;
+    background: #916dd1;
+}
+#calendar .fc-toolbar:before{
+    top: 0;
+    background: transparent;
+}
+#calendar .fc-toolbar .fc-center{
+    margin-top: -18px;
+}
+#calendar #fc-actions{
+    top: 5px
+}
+#calendar .fc-toolbar .ui-button > span {
+    margin-top: 0px;
+}
+/* Custom DatePicker */
+.bootstrap-datetimepicker-widget{
+    margin-top: 23px !important
+}
+/* Divider horizontal line */
+.divider{
+    height: 1px;
+    margin: 8px 0;
+    overflow: hidden;
+    background-color: #e5e5e5;
+}
+.pmo-contact ul li {padding: 8px 0 8px 85px;}
+.pmo-contact ul li i{font-style: normal ;width: 150px; text-align: left; font-weight: 500;}
+
+.dropdown-menu > li > a {
+    font-size: 13px;
+    font-weight: 400;
+    font-family: raleway;
+}
+
+.modal-title{
+    color: #33475b !important;
+    font-family: raleway, Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-shadow: 0 0 1px transparent;
+    text-transform: none;
+    font-weight: 400;
+    font-size: 1.5rem!important;
+}
+
+.breadcrumb {
+    z-index: 9;
+    position: absolute;
+    top: -3px;
+    border-bottom: 0px !important;
+    margin-bottom: 0px !important;
+    padding: 5px 33px 11px !important;
+}
+
+.fixed-alerts {
+	position: fixed;
+	top: 105px;
+	left: 50%;
+	margin-left: -480px;
+	width: 960px;
+	z-index: 1000;
+}
+
+.fixed-alert {
+	background: #fff;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}

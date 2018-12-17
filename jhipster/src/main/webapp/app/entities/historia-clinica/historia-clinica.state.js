@@ -10,18 +10,14 @@
     function stateConfig($stateProvider) {
         $stateProvider
         .state('historia-clinica', {
-            parent: 'entity',
+            parent: 'app',
             url: '/historia-clinica',
+            templateUrl: 'app/entities/historia-clinica/historia-clinicas.html',
+            controller: 'HistoriaClinicaController',
+            controllerAs: 'vm',
             data: {
                 authorities: ['ROLE_USER'],
                 pageTitle: 'HistoriaClinicas'
-            },
-            views: {
-                'content@': {
-                    templateUrl: 'app/entities/historia-clinica/historia-clinicas.html',
-                    controller: 'HistoriaClinicaController',
-                    controllerAs: 'vm'
-                }
             },
             resolve: {
             }

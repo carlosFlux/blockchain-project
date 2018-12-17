@@ -10,18 +10,14 @@
     function stateConfig($stateProvider) {
         $stateProvider
         .state('sintoma', {
-            parent: 'entity',
+            parent: 'app',
             url: '/sintoma',
+            templateUrl: 'app/entities/sintoma/sintomas.html',
+            controller: 'SintomaController',
+            controllerAs: 'vm',
             data: {
                 authorities: ['ROLE_USER'],
                 pageTitle: 'Sintomas'
-            },
-            views: {
-                'content@': {
-                    templateUrl: 'app/entities/sintoma/sintomas.html',
-                    controller: 'SintomaController',
-                    controllerAs: 'vm'
-                }
             },
             resolve: {
             }

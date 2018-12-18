@@ -23,19 +23,15 @@
             }
         })
         .state('historia-clinica-detail', {
-            parent: 'historia-clinica',
+            parent: 'app',
             url: '/historia-clinica/{id}',
             data: {
                 authorities: ['ROLE_USER'],
                 pageTitle: 'HistoriaClinica'
             },
-            views: {
-                'content@': {
-                    templateUrl: 'app/entities/historia-clinica/historia-clinica-detail.html',
-                    controller: 'HistoriaClinicaDetailController',
-                    controllerAs: 'vm'
-                }
-            },
+            templateUrl: 'app/entities/historia-clinica/historia-clinica-detail.html',
+            controller: 'HistoriaClinicaDetailController',
+            controllerAs: 'vm',
             resolve: {
                 entity: ['$stateParams', 'HistoriaClinica', function($stateParams, HistoriaClinica) {
                     return HistoriaClinica.get({id : $stateParams.id}).$promise;

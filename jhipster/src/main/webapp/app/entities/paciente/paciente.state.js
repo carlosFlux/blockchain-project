@@ -23,19 +23,15 @@
             }
         })
         .state('paciente-detail', {
-            parent: 'paciente',
+            parent: 'app',
             url: '/paciente/{id}',
             data: {
                 authorities: ['ROLE_USER'],
                 pageTitle: 'Paciente'
             },
-            views: {
-                'content@': {
-                    templateUrl: 'app/entities/paciente/paciente-detail.html',
-                    controller: 'PacienteDetailController',
-                    controllerAs: 'vm'
-                }
-            },
+            templateUrl: 'app/entities/paciente/paciente-detail.html',
+            controller: 'PacienteDetailController',
+            controllerAs: 'vm',
             resolve: {
                 entity: ['$stateParams', 'Paciente', function($stateParams, Paciente) {
                     return Paciente.get({id : $stateParams.id}).$promise;

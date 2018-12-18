@@ -94,6 +94,7 @@
 
         function logout() {
             Auth.logout();
+            $state.go('home');
         }
 
         ctx.login = login;

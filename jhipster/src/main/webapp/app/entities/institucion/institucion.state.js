@@ -23,7 +23,7 @@
             }
         })
         .state('institucion-detail', {
-            parent: 'institucion',
+            parent: 'app',
             url: '/institucion/{id}',
             data: {
                 authorities: ['ROLE_USER'],

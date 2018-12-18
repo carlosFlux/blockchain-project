@@ -23,19 +23,15 @@
             }
         })
         .state('sintoma-detail', {
-            parent: 'sintoma',
+            parent: 'app',
             url: '/sintoma/{id}',
             data: {
                 authorities: ['ROLE_USER'],
                 pageTitle: 'Sintoma'
             },
-            views: {
-                'content@': {
-                    templateUrl: 'app/entities/sintoma/sintoma-detail.html',
-                    controller: 'SintomaDetailController',
-                    controllerAs: 'vm'
-                }
-            },
+            templateUrl: 'app/entities/sintoma/sintoma-detail.html',
+            controller: 'SintomaDetailController',
+            controllerAs: 'vm',
             resolve: {
                 entity: ['$stateParams', 'Sintoma', function($stateParams, Sintoma) {
                     return Sintoma.get({id : $stateParams.id}).$promise;

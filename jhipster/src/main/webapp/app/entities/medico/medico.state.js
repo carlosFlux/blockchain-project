@@ -23,19 +23,15 @@
             }
         })
         .state('medico-detail', {
-            parent: 'medico',
+            parent: 'app',
             url: '/medico/{id}',
             data: {
                 authorities: ['ROLE_USER'],
                 pageTitle: 'Medico'
             },
-            views: {
-                'content@': {
-                    templateUrl: 'app/entities/medico/medico-detail.html',
-                    controller: 'MedicoDetailController',
-                    controllerAs: 'vm'
-                }
-            },
+            templateUrl: 'app/entities/medico/medico-detail.html',
+            controller: 'MedicoDetailController',
+            controllerAs: 'vm',
             resolve: {
                 entity: ['$stateParams', 'Medico', function($stateParams, Medico) {
                     return Medico.get({id : $stateParams.id}).$promise;
